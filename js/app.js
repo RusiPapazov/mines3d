@@ -18,7 +18,7 @@
             link  = document.createElement('link');
         link.rel  = 'stylesheet';
         link.type = 'text/css';
-        link.href = '/css/styles' + env + 'd.css';
+        link.href = './css/styles' + env + 'd.css';
         link.media = 'all';
         head.appendChild(link);
     });
