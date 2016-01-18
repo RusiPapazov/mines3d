@@ -3,14 +3,14 @@
 /*author rusi@papazov.pro */
 require.config({
     urlArgs: 'v=' + Date.now(),
-    baseUrl: '/js/app',
+    baseUrl: './js/app',
     paths: {
-        jquery: '/js/vendor/jquery-2.1.3.min',
-        jqueryui: '/js/vendor/jquery-ui.min',
-        Detector: '/js/vendor/Detector',
-        ApiRemote: '/js/app/Api3D',
-        nanoModal: '/js/vendor/nanomodal.min',
-        reqwest: '/js/vendor/reqwest'
+        jquery: '../vendor/jquery-2.1.3.min',
+        jqueryui: './vendor/jquery-ui.min',
+        Detector: '../vendor/Detector',
+        ApiRemote: '../app/Api3D',
+        nanoModal: '../vendor/nanomodal.min',
+        reqwest: '../vendor/reqwest'
     },
     shim: {
         jquery: {

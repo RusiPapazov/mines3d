@@ -1,18 +1,18 @@
 /*global require, define */
 /*jslint browser: true */
 require.config({
-    baseUrl: '/js/app',
+    baseUrl: './js/app',
     paths: {
-        three: '/js/vendor/three.min',
-        TrackballControls: '/js/vendor/TrackballControls',
-        OrbitControls: '/js/vendor/OrbitControls',
-        Detector: '/js/vendor/Detector',
-        optimer: '/js/vendor/fonts/optimer_bold.typeface',
-        keyboardState: '/js/vendor/THREEx.KeyboardState',
-        fullScreen: '/js/vendor/THREEx.FullScreen',
-        reqwest: '/js/vendor/reqwest',
-        ApiRemote: '/js/app/Api3D',
-        nanoModal: '/js/vendor/nanomodal.min',
+        three: '../vendor/three.min',
+        TrackballControls: '../vendor/TrackballControls',
+        OrbitControls: '../vendor/OrbitControls',
+        Detector: '../vendor/Detector',
+        optimer: '../vendor/fonts/optimer_bold.typeface',
+        keyboardState: '../vendor/THREEx.KeyboardState',
+        fullScreen: '../vendor/THREEx.FullScreen',
+        reqwest: '../vendor/reqwest',
+        ApiRemote: '../app/Api3D',
+        nanoModal: '../vendor/nanomodal.min',
     },
     shim: {
         three: {
