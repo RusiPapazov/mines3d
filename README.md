@@ -1,7 +1,7 @@
 # mines3d
 The classic minesweeper game in 3D
 
-[Demo](http://rusipapazov.github.io/mines3d/)
+[Demo](https://rusipapazov.github.io/mines3d/)
 
 ## Dependencies:
 
