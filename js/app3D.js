@@ -42,7 +42,7 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
     "use strict";
     var grid, clock,
         config = {
-            debug: true,
+            debug: false,
             fog: true,
             cache: false,
             renderer: {
