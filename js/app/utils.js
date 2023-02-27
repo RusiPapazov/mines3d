@@ -12,7 +12,7 @@ define(function () {
                 to = from - to;
                 from = from - to;
             }
-            return parseInt(Math.floor((Math.random() * 1e5) % (to - from + 1) + from), 10);
+            return Math.floor((Math.random() * 1e5) % (to - from + 1) + from);
         },
         pad: function pad(number, digits, max) {
             if (typeof number !== 'number') {
