@@ -39,11 +39,10 @@ define(['Settings', 'Storage', 'dialog', 'EventListener', 'utils'], function (Se
             //     }, true);
             // }
             if (elements.popular) {
-                elements.popular.addEventListener('click', function (e) {
-                    var target = e.target;
+                elements.popular.addEventListener('click', function ({target, preventDefault}) {
                     if (target.nodeName === 'A') {
                         that.settings.deserialize(Settings.SOURCE_INPUT, target.dataset.settings);
-                        e.preventDefault();
+                        preventDefault();
                     }
                 });
             }
