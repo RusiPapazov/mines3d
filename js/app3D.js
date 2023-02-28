@@ -108,13 +108,13 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
     };
 
     const animate = function animate() {
-//            if (grid.isInited() && !grid.isPaused() && grid.isActive()) {
+//            if (grid.isInitialized() && !grid.isPaused() && grid.isActive()) {
 //                clock.start();
 //            }
         window.requestAnimationFrame(animate);
         app.controls.update();
         render();
-//            if (grid.isInited() && !grid.isPaused() && grid.isActive()) {
+//            if (grid.isInitialized() && !grid.isPaused() && grid.isActive()) {
 //                clock.stop();
 //            }
 //            update();
