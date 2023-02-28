@@ -7,7 +7,7 @@ define(['three', 'utils', 'views/Cell3D', 'EventListener'], function (THREE, uti
 
         let paused = false;
         let active = true;
-        let inited = false;
+        let initialized = false;
         let placingFlags = false;
         let x = o.x;
         let y = o.y;
@@ -51,9 +51,9 @@ define(['three', 'utils', 'views/Cell3D', 'EventListener'], function (THREE, uti
                     return;
                 }
                 if (which === Grid.MOUSE_LEFT && !that.isPlacingFlags()) {
-                    if (!that.isInited()) {
+                    if (!that.isInitialized()) {
                         that.generateMines(cell);
-                        that.setInited(true);
+                        that.setInitialized(true);
                     }
                     clk(cell);
                     that.victoryCheck();
@@ -204,7 +204,7 @@ define(['three', 'utils', 'views/Cell3D', 'EventListener'], function (THREE, uti
             this.setY(y);
             this.setZ(z);
             this.setMines(mines);
-            this.setInited(false);
+            this.setInitialized(false);
             this.setActive(true);
             this.setPaused(false);
 
@@ -242,13 +242,13 @@ define(['three', 'utils', 'views/Cell3D', 'EventListener'], function (THREE, uti
             active = newActive;
         };
 
-        this.isInited = function isInited() {
-            return inited;
+        this.isInitialized = function isInitialized() {
+            return initialized;
         };
 
-        this.setInited = function setInited(newInited) {
-            inited = newInited;
-            that.trigger(Grid.EVENT_INIT, inited);
+        this.setInitialized = function setInitialized(newInitialized) {
+            initialized = newInitialized;
+            that.trigger(Grid.EVENT_INIT, initialized);
         };
 
         this.isPaused = function isPaused() {
