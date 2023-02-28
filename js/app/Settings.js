@@ -79,7 +79,7 @@ define(['./Storage', 'utils'], function (Storage, utils) {
     Settings.DEFAULT_X = 10;
     Settings.DEFAULT_Y = 10;
     Settings.DEFAULT_Z = 10;
-    Settings.DEFAULT_MINES = 10;
+    Settings.DEFAULT_MINES = 30;
     Settings.CSS_ID_X = 'x';
     Settings.CSS_ID_Y = 'y';
     Settings.CSS_ID_Z = 'z';
