@@ -274,6 +274,7 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
                 }
                 name = input;
                 storage.setItem('name', name);
+                ui.setName(name);
                 victory();
             };
             clock.reset();

@@ -111,6 +111,10 @@ define(['Settings', 'Storage', 'dialog', 'EventListener', 'utils'], function (Se
                 : time ;
         };
 
+        this.setName = function setName(name) {
+            elements.name.value = name;
+        };
+
         this.populatePopular = function populatePopular({ success, popular }) {
             if (!success || !popular) {
                 return;
