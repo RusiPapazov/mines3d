@@ -1,17 +1,17 @@
 /*global define */
 /*jslint browser: true */
-define(function () {
+define(['./Storage'], function (Storage) {
     "use strict";
     const KEY = 'scores';
     const MAX_POSITION = 10;
     const POPULAR_RESULTS = 10;
-
+    const store = new Storage();
     const storage = {
         load: function () {
-            return JSON.parse(localStorage.getItem(KEY));
+            return store.getItem(KEY);
         },
         save: function (value) {
-            localStorage.setItem(KEY, JSON.stringify(value));
+            store.setItem(KEY, value);
         },
     };
     const getScores = function getScores(size) {
