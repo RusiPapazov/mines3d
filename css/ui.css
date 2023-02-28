@@ -1,3 +1,16 @@
+:root {
+    --header-padding: 1em;
+    --header-border: 4px;
+    --header-background: #C0C0C0;
+    --shadow: 0 calc(var(--header-border) * -1) 0 0 #FFFFFF,
+        inset 0 calc(var(--header-border) * -1) 0 0 #FFFFFF,
+        inset calc(var(--header-border) * -1) 0 0 0 #FFFFFF,
+        calc(var(--header-border) * -1) 0 0 0 #FFFFFF,
+        var(--header-border) 0 0 0 #808080,
+        inset var(--header-border) 0 0 0 #808080,
+        inset 0 var(--header-border) 0 0 #808080,
+        0 var(--header-border) 0 0 #808080;
+}
 @font-face {
     font-family: 'digital';
     src: url('digital.ttf');
@@ -103,15 +116,16 @@ input:checked + .button,
 
 #top-menu {
     position: fixed;
-    right: 4px;
-    top: 4px;
-    left: 4px;
-    padding: 1em;
-    /*height: 3em;*/
-    vertical-align: middle;
-    background: white;
+    right: var(--header-border);
+    top: var(--header-border);
+    left: var(--header-border);
+    padding: var(--header-padding);
+    background: var(--header-background);
+    border: var(--header-border) solid var(--header-background);
     z-index: 2;
-    box-shadow: 0 0.2em 0.2em 0.2em rgba(100, 100, 100, 0.5);
+    -webkit-box-shadow: var(--shadow);
+    box-shadow: var(--shadow);
+    vertical-align: middle;
     text-align: center;
 }
 
@@ -125,9 +139,7 @@ input:checked + .button,
 #mines-left {
     float: right;
 }
-/*#s {
-    text-align: center;
-}*/
+
 #author {
     position: absolute;
     bottom: 0.5em;
