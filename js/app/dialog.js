@@ -10,9 +10,11 @@ define(['nanoModal'], function (nanoModal) {
     return {
         alert: function (text, cb) {
             const dialog = nanoModal(formatText(text), {
+                overlayClose: false,
                 buttons: [{
                     text: 'Ok',
                     autoRemove: true,
+                    primary: true,
                     handler: function (modal) {
                         if (typeof cb === 'function') {
                             cb();
@@ -26,6 +28,7 @@ define(['nanoModal'], function (nanoModal) {
         prompt: function prompt(text, dflt, cb) {
             text += '<br><input value="' + dflt + '" id="prompt-input">';
             const dialog = nanoModal(formatText(text), {
+                overlayClose: false,
                 buttons: [{
                     text: 'Ok',
                     autoRemove: true,
