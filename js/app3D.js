@@ -11,7 +11,6 @@ require.config({
         keyboardState: '../vendor/THREEx.KeyboardState',
         fullScreen: '../vendor/THREEx.FullScreen',
         reqwest: '../vendor/reqwest',
-        ApiRemote: '../app/Api3D',
         nanoModal: '../vendor/nanomodal.min',
     },
     shim: {
