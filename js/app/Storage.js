@@ -3,7 +3,8 @@
 define(function () {
     "use strict";
     return function Storage() {
-        const data = {};
+        const KEY = 'mines3d';
+        let data = {};
 
         const getStorage = () => {
             try {
@@ -18,16 +19,15 @@ define(function () {
         const localStorage = getStorage();
 
         this.setItem = function setItem(key, item) {
+            data[key] = item;
             if (localStorage) {
-                localStorage.setItem(key, item);
-            } else {
-                data[key] = item;
+                localStorage.setItem(KEY, JSON.stringify(data));
             }
         };
 
         this.getItem = function getItem(key) {
             if (localStorage) {
-                return localStorage.getItem(key);
+                data = JSON.parse(localStorage.getItem(KEY)) || {};
             }
 
             return data[key];
