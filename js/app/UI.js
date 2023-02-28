@@ -39,11 +39,10 @@ define(['Settings', 'Storage', 'dialog', 'EventListener', 'utils'], function (Se
             //     }, true);
             // }
             if (elements.popular) {
-                elements.popular.addEventListener('click', function (e) {
-                    var target = e.target;
+                elements.popular.addEventListener('click', function ({target, preventDefault}) {
                     if (target.nodeName === 'A') {
                         that.settings.deserialize(Settings.SOURCE_INPUT, target.dataset.settings);
-                        e.preventDefault();
+                        preventDefault();
                     }
                 });
             }
@@ -109,6 +108,10 @@ define(['Settings', 'Storage', 'dialog', 'EventListener', 'utils'], function (Se
             elements.timer.innerHTML = typeof time === 'number'
                 ? utils.pad(time)
                 : time ;
+        };
+
+        this.setName = function setName(name) {
+            elements.name.value = name;
         };
 
         this.populatePopular = function populatePopular({ success, popular }) {
