@@ -244,18 +244,10 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
         app.renderer.domElement.addEventListener('mousedown', handlers.mouse.down, false);
 
         grid.on(Grid.EVENT_GAME_OVER, function ({ status }) {
-            const name = storage.getItem('name');
-            const prompt = function prompt() {
-                if (!name) {
-                    dialog.prompt('You won, please enter your name', 'Anonymous', prompt); // wut??
-                }
-            };
+            let name = storage.getItem('name');
+            console.log('name from storage', name);
             const timestamp = Math.floor(Date.now() / 1000);
-            clock.reset();
-            clock.stop();
-            if (status === Grid.STATUS_VICTORY) {
-                prompt();
-                name && storage.setItem('name', name);
+            const victory = () => {
                 api.gameOver({
                     status,
                     name,
@@ -267,12 +259,27 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
                     mines: grid.getMines()
                 }).then(function (response) {
                     if (response.success) {
-                        displayScore(response);
+                        // displayScore(response);
 
                         return;
                     }
                     dialog.alert(response.message);
                 });
+            };
+            const prompt = function prompt(input) {
+                if (!input) {
+                    dialog.prompt('You won, please enter your name', name ?? 'Anonymous', prompt);
+
+                    return;
+                }
+                name = input;
+                storage.setItem('name', name);
+                victory();
+            };
+            clock.reset();
+            clock.stop();
+            if (status === Grid.STATUS_VICTORY) {
+                dialog.prompt('You won, please enter your name', name ?? 'Anonymous', prompt);
             }
         });
         grid.on(Grid.EVENT_MINES_LEFT_CHANGE, function (minesLeft) {
