@@ -103,9 +103,9 @@ input:checked + .button,
 
 #top-menu {
     position: fixed;
-    right: 10%;
-    top: 0;
-    left: 10%;
+    right: 4px;
+    top: 4px;
+    left: 4px;
     padding: 1em;
     /*height: 3em;*/
     vertical-align: middle;
