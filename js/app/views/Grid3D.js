@@ -2,16 +2,17 @@
 define(['three', 'utils', 'views/Cell3D', 'EventListener'], function (THREE, utils, Cell, EventListener) {
     "use strict";
     const Grid = function Grid(o) {
+        const that = this;
+        const el = new THREE.Object3D();
+
         let paused = false;
         let active = true;
         let inited = false;
         let placingFlags = false;
-        let mines = o.mines || Grid.DEFAULT_MINES;
-        const that = this;
-        const el = new THREE.Object3D();
-        let x = o.width || o.x || Grid.DEFAULT_X;
-        let y = o.y || Grid.DEFAULT_Y;
-        let z = o.z || Grid.DEFAULT_Z;
+        let x = o.x;
+        let y = o.y;
+        let z = o.z;
+        let mines = o.mines;
         let cells = [];
 
         const empty = function empty() {
@@ -272,10 +273,6 @@ define(['three', 'utils', 'views/Cell3D', 'EventListener'], function (THREE, uti
         that.reset(o);
     };
 
-    Grid.DEFAULT_Z = 10;
-    Grid.DEFAULT_X = 10;
-    Grid.DEFAULT_Y = 10;
-    Grid.DEFAULT_MINES = 10;
     Grid.STATUS_VICTORY = 'victory';
     Grid.STATUS_LOSS = 'loss';
     Grid.EVENT_MOUSE_ENTER = 'mouse-enter';
