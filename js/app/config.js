@@ -9,8 +9,8 @@ define(function () {
                 ameOver: '/game/save',
                 scores: '/game/scores',
                 popular: '/game/popular',
-                token: '/token'
-            }
-        }
+                token: '/token',
+            },
+        },
     };
 });

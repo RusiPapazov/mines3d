@@ -27,5 +27,4 @@
     } else {
         document.body.innerText = 'WebGl is required.';// @todo add more info
     }
-    // env = Detector.webgl && webglAvailable() ? 3 : 2;
 }());

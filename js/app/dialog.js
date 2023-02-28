@@ -2,12 +2,13 @@
 /*global define */
 define(['nanoModal'], function (nanoModal) {
     "use strict";
-    var formatText = function formatText(text) {
+    const formatText = function formatText(text) {
         return text.replace(/\n/g, '<br>');
     };
+
     return {
         alert: function (text, cb) {
-            var dialog = nanoModal(formatText(text), {
+            const dialog = nanoModal(formatText(text), {
                 buttons: [{
                     text: 'Ok',
                     autoRemove: true,
@@ -23,7 +24,7 @@ define(['nanoModal'], function (nanoModal) {
         },
         prompt: function prompt(text, dflt, cb) {
             text += '<br><input value="' + dflt + '" id="prompt-input">';
-            var dialog = nanoModal(formatText(text), {
+            const dialog = nanoModal(formatText(text), {
                 buttons: [{
                     text: 'Ok',
                     autoRemove: true,
