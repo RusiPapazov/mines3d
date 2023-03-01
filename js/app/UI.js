@@ -9,6 +9,12 @@ define(['Settings', 'Storage', 'dialog', 'EventListener', 'utils'], function (Se
         const elements = {};
 
         const bind = function bind() {
+            if (elements.reset) {
+                elements.reset.addEventListener('click', e => {
+                    that.trigger(UI.EVENT_RESET);
+                    e.preventDefault();
+                });
+            }
             if (elements.flags) {
                 elements.flags.addEventListener('change', function (e) {
                     e.preventDefault();
@@ -132,9 +138,22 @@ define(['Settings', 'Storage', 'dialog', 'EventListener', 'utils'], function (Se
             elements.popular.innerHTML = html.join('');
         };
 
+        this.setSmiley = function (className) {
+            if (!UI.CSS_SMILEYS.includes(className)) {
+                return;
+            }
+
+            elements.reset.className = className;
+        };
+
+        this.resetSmiley = function () {
+            elements.reset.className = '';
+        };
+
         EventListener.subscribe(that);
         that.settings = new Settings();
         that.storage = new Storage();
+        elements.reset = get(UI.CSS_ID_RESET);
         elements.timer = get(UI.CSS_ID_TIMER);
         elements.minesLeft = get(UI.CSS_ID_MINES_LEFT);
         elements.flags = get(UI.CSS_ID_FLAGS);
@@ -159,8 +178,14 @@ define(['Settings', 'Storage', 'dialog', 'EventListener', 'utils'], function (Se
     UI.CSS_ID_SCORE = 'score';
     UI.CSS_ID_NEW_GAME = 'new-game';
     UI.CSS_ID_SETTINGS = 'settings';
+    UI.CSS_ID_RESET = 'reset';
+    UI.CSS_SMILEY_SHOCK_CLASS = 'shock';
+    UI.CSS_SMILEY_DEAD_CLASS = 'dead';
+    UI.CSS_SMILEY_SUNGLASSES_CLASS = 'sunglasses';
+    UI.CSS_SMILEYS = [UI.CSS_SMILEY_SHOCK_CLASS, UI.CSS_SMILEY_DEAD_CLASS, UI.CSS_SMILEY_SUNGLASSES_CLASS];
     UI.EVENT_TOGGLE_FLAGS = 'toggle-flags';
     UI.EVENT_PAUSE = 'pause';
+    UI.EVENT_RESET = 'reset';
     UI.EVENT_SHOW_SCORE = 'show-score';
     UI.EVENT_NEW_GAME = 'new-game';
     UI.EVENT_HELP = 'help';
