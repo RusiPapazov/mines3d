@@ -116,10 +116,13 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
         }
     };
 
-    const resume = () => {
+    const resume = ({updateUi} = {updateUi: false}) => {
         clock.start();
         grid.setPaused(false);
         app.scene.fog.density = 0.00025;
+        if (updateUi) {
+            ui.elements.pause.checked = false;
+        }
     };
 
     const animate = function animate() {
@@ -332,7 +335,8 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
         ui.on(UI.EVENT_TOGGLE_FLAGS, grid.setPlacingFlags);
 
         ui.on(UI.EVENT_HELP, function () {
-            dialog.alert(document.getElementById('help-message').innerHTML);
+            pause({updateUi: true});
+            dialog.alert(document.getElementById('help-message').innerHTML, () => resume({updateUi: true}));
         });
 
         ui.on(UI.EVENT_PAUSE, function (paused) {
