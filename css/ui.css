@@ -11,6 +11,8 @@
         inset var(--panel-border) 0 0 0 #808080,
         inset 0 var(--panel-border) 0 0 #808080,
         0 var(--panel-border) 0 0 #808080;
+    --side-menu-width: 140px;
+    --side-menu-handle: 14px;
 }
 @font-face {
     font-family: 'digital';
@@ -30,39 +32,32 @@ body {
 }
 
 #settings {
+    cursor: pointer;
     background: var(--panel-background);
     position: fixed;
-    right: -9em;
+    right: calc(var(--side-menu-handle) - var(--side-menu-width));
     top: var(--panel-padding);
     bottom: var(--panel-border);
-    width: 10em;
-    padding: 1em;
+    width: var(--side-menu-width);
+    padding: calc(2 * var(--panel-padding)) var(--panel-padding) var(--panel-padding) var(--panel-padding);
     z-index: 1;
     box-shadow: var(--shadow);
 }
 #settings.visible {
     right: 0;
     z-index: 3;
+    cursor: default;
 }
 
-#toggler {
-    line-height: 2em;
-    height: 2em;
-    font-size: 2em;
-    font-weight: bold;
+#close-settings {
+    cursor: pointer;
     position: absolute;
-    left: 0;
-    top: 50%;
-    margin-top: -1em;
-    text-decoration: none;
-    color: black;
+    border: none;
+    background: none;
+    top: var(--panel-padding);
+    right: var(--panel-padding);
 }
-#toggler:before {
-    content: '<'
-}
-.visible #toggler:before {
-    content: '>';
-}
+
 #settings input[type="number"] {
     width: 90%;
     margin: 0 auto;

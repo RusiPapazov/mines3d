@@ -39,11 +39,20 @@ define(['Settings', 'Storage', 'dialog', 'EventListener', 'utils'], function (Se
                     e.preventDefault();
                 });
             }
-            if (elements.toggler && elements.settings) {
-                elements.toggler.addEventListener('click', function (e) {
+            if (elements.settings) {
+                elements.settings.addEventListener('click', function (e) {
                     e.preventDefault();
-                    elements.settings.classList.toggle(UI.CSS_CLASS_VISIBLE);
+                    if (!elements.settings.classList.contains(UI.CSS_CLASS_VISIBLE)) {
+                        elements.settings.classList.toggle(UI.CSS_CLASS_VISIBLE);
+                    }
                 }, true);
+
+                if (elements.closeSettings) {
+                    elements.closeSettings.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        elements.settings.classList.remove(UI.CSS_CLASS_VISIBLE);
+                    })
+                }
             }
             if (elements.popular) {
                 elements.popular.addEventListener('click', function ({target, preventDefault}) {
@@ -161,7 +170,7 @@ define(['Settings', 'Storage', 'dialog', 'EventListener', 'utils'], function (Se
         elements.score = get(UI.CSS_ID_SCORE);
         elements.newGame = get(UI.CSS_ID_NEW_GAME);
         elements.settings = get(UI.CSS_ID_SETTINGS);
-        elements.toggler = get(UI.CSS_ID_TOGGLER);
+        elements.closeSettings = get(UI.CSS_ID_CLOSE_SETTINGS);
         elements.popular = get(UI.CSS_ID_POPULAR);
         elements.help = get(UI.CSS_ID_HELP);
         elements.name = get(UI.CSS_ID_NAME);
@@ -191,7 +200,7 @@ define(['Settings', 'Storage', 'dialog', 'EventListener', 'utils'], function (Se
     UI.EVENT_HELP = 'help';
     UI.EVENT_NAME_CHANGE = 'name-change';
     UI.CSS_CLASS_VISIBLE = 'visible';
-    UI.CSS_ID_TOGGLER = 'toggler';
+    UI.CSS_ID_CLOSE_SETTINGS = 'close-settings';
     UI.CSS_ID_POPULAR = 'popular-games';
     UI.CSS_ID_HELP = 'help';
     UI.CSS_ID_NAME = 'name';
