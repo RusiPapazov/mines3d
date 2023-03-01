@@ -117,12 +117,17 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
     };
 
     const resume = ({updateUi} = {updateUi: false}) => {
-        clock.start();
-        grid.setPaused(false);
-        app.scene.fog.density = 0.00025;
         if (updateUi) {
             ui.elements.pause.checked = false;
         }
+
+        app.scene.fog.density = 0.00025;
+
+        if (!grid.isInitialized()) {
+            return;
+        }
+        clock.start();
+        grid.setPaused(false);
     };
 
     const animate = function animate() {
