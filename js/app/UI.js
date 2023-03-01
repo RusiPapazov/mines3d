@@ -138,6 +138,18 @@ define(['Settings', 'Storage', 'dialog', 'EventListener', 'utils'], function (Se
             elements.popular.innerHTML = html.join('');
         };
 
+        this.setSmiley = function (className) {
+            if (!UI.CSS_SMILEYS.includes(className)) {
+                return;
+            }
+
+            elements.reset.className = className;
+        };
+
+        this.resetSmiley = function () {
+            elements.reset.className = '';
+        };
+
         EventListener.subscribe(that);
         that.settings = new Settings();
         that.storage = new Storage();
@@ -167,6 +179,10 @@ define(['Settings', 'Storage', 'dialog', 'EventListener', 'utils'], function (Se
     UI.CSS_ID_NEW_GAME = 'new-game';
     UI.CSS_ID_SETTINGS = 'settings';
     UI.CSS_ID_RESET = 'reset';
+    UI.CSS_SMILEY_SHOCK_CLASS = 'shock';
+    UI.CSS_SMILEY_DEAD_CLASS = 'dead';
+    UI.CSS_SMILEY_SUNGLASSES_CLASS = 'sunglasses';
+    UI.CSS_SMILEYS = [UI.CSS_SMILEY_SHOCK_CLASS, UI.CSS_SMILEY_DEAD_CLASS, UI.CSS_SMILEY_SUNGLASSES_CLASS];
     UI.EVENT_TOGGLE_FLAGS = 'toggle-flags';
     UI.EVENT_PAUSE = 'pause';
     UI.EVENT_RESET = 'reset';

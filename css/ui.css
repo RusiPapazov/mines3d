@@ -168,6 +168,18 @@ input:checked + .button,
     background-image: url("./images/smileys.jpg");
 }
 
+#reset.shock {
+    background-position: calc(-1px + var(--smiley-size) * 2) -1px;
+}
+
+#reset.dead {
+    background-position: calc(-1px + var(--smiley-size) * 3) -1px;
+}
+
+#reset.sunglasses {
+    background-position: calc(-1px + var(--smiley-size) * 4) -1px;
+}
+
 @media all and (max-width: 699px) {
   #header {
     left: 0;

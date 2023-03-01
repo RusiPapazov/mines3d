@@ -196,9 +196,15 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
                     }
                 }
                 app.mouseHeld = null;
+                if (grid.isActive()) {
+                    ui.resetSmiley();
+                }
             },
             down: function () {
                 app.mouseHeld = app.mouse.clone();
+                if (grid.isActive()) {
+                    ui.setSmiley(UI.CSS_SMILEY_SHOCK_CLASS);
+                }
             }
         }
     };
@@ -274,6 +280,7 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
             console.log('name from storage', name);
             const timestamp = Math.floor(Date.now() / 1000);
             const victory = () => {
+                ui.setSmiley(UI.CSS_SMILEY_SUNGLASSES_CLASS);
                 api.gameOver({
                     status,
                     name,
@@ -307,7 +314,14 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
             clock.stop();
             if (status === Grid.STATUS_VICTORY) {
                 dialog.prompt('You won, please enter your name', name ?? 'Anonymous', prompt);
+
+                return;
             }
+
+            if (status === Grid.STATUS_LOSS) {
+                ui.setSmiley(UI.CSS_SMILEY_DEAD_CLASS);
+            }
+
         });
         grid.on(Grid.EVENT_MINES_LEFT_CHANGE, function (minesLeft) {
             ui.setMinesLeft(minesLeft);
@@ -321,6 +335,7 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
             const o = ui.settings.get(Settings.SOURCE_INPUT);
             ui.settings.set(Settings.SOURCE_STORAGE, o);
             grid.reset(o);
+            ui.resetSmiley();
             clock = new Clock();
             ui.setTime(0);
             ui.setMinesLeft(o.mines);
@@ -363,6 +378,7 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
 
             ui.setMinesLeft(grid.getMines());
             ui.setTime(clock.elapsedTime);
+            ui.resetSmiley();
         });
 
         THREEx.FullScreen.bindKey({
