@@ -114,7 +114,7 @@ input:checked + .button,
     left: -999em;
 }
 
-#top-menu {
+#header {
     position: fixed;
     right: var(--header-border);
     top: var(--header-border);
@@ -162,7 +162,7 @@ input:checked + .button,
     border: 0;
 }
 @media all and (max-width: 699px) {
-  #top-menu {
+  #header {
     left: 0;
     right: 0;
     padding: 0;
