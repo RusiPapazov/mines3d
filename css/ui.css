@@ -86,9 +86,11 @@ body {
     font-family: Arial;
     font-size: 15px;
     font-weight: bold;
-    padding: 6px 24px;
+    padding: 0 24px;
     text-decoration: none;
     text-shadow: 0 1px 0 #fff;
+    height: var(--smiley-size);
+    line-height: var(--smiley-size);
 }
 input:checked + .button,
 .button:hover,
@@ -161,6 +163,7 @@ input:checked + .button,
     border: 0;
 }
 #reset {
+    text-indent: -9999em;
     height: var(--smiley-size);
     width: var(--smiley-size);
     background-position: calc(-1px + var(--smiley-size)) -1px;
