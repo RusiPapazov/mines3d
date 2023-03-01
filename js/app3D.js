@@ -68,7 +68,6 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
             noPan: false,
             staticMoving: true,
             dynamicDampingFactor: 0.3,
-            keys: [65, 83, 68]
         },
         lights: [{
             type: 'DirectionalLight',
@@ -240,7 +239,6 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
         app.controls.noPan = config.controls.noPan;
         app.controls.staticMoving = config.controls.staticMoving;
         app.controls.dynamicDampingFactor = config.controls.dynamicDampingFactor;
-        app.controls.keys = config.controls.keys;
     };
 
     const initRenderer = function initRenderer() {
