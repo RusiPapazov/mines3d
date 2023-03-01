@@ -7,6 +7,7 @@ define(['Settings', 'Storage', 'dialog', 'EventListener', 'utils'], function (Se
         const that = this;
         const get = utils.get;
         const elements = {};
+
         const bind = function bind() {
             if (elements.flags) {
                 elements.flags.addEventListener('change', function (e) {
@@ -146,8 +147,9 @@ define(['Settings', 'Storage', 'dialog', 'EventListener', 'utils'], function (Se
         elements.help = get(UI.CSS_ID_HELP);
         elements.name = get(UI.CSS_ID_NAME);
         elements.name.value = that.storage.getItem('name') || 'Annonymous';
-        bind();
+        this.elements = elements;
 
+        bind();
     };
 
     UI.CSS_ID_TIMER = 'timer';
