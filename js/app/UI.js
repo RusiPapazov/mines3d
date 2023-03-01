@@ -131,6 +131,9 @@ define(['Settings', 'Storage', 'dialog', 'EventListener', 'utils'], function (Se
         };
 
         this.populatePopular = function populatePopular({ success, popular }) {
+            if (!elements.popular) {
+                console.warn('No popular element found');
+            }
             if (!success || !popular) {
                 return;
             }

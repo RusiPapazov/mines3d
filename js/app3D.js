@@ -410,7 +410,8 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
             error: noop,
             assert: noop,
             debug: noop,
-            info: noop
+            info: noop,
+            warn: noop,
         };
     };
 
