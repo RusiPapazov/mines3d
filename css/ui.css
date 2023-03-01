@@ -1,4 +1,5 @@
 :root {
+    --smiley-size: 52px;
     --header-padding: 1em;
     --header-border: 4px;
     --header-background: #C0C0C0;
@@ -159,6 +160,14 @@ input:checked + .button,
     text-align: center;
     border: 0;
 }
+#reset {
+    height: var(--smiley-size);
+    width: var(--smiley-size);
+    background-position: calc(-1px + var(--smiley-size)) -1px;
+    background-size: calc(var(--smiley-size) * 4) calc(var(--smiley-size) - 1px);
+    background-image: url("./images/smileys.jpg");
+}
+
 @media all and (max-width: 699px) {
   #header {
     left: 0;

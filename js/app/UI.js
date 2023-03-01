@@ -159,6 +159,7 @@ define(['Settings', 'Storage', 'dialog', 'EventListener', 'utils'], function (Se
     UI.CSS_ID_SCORE = 'score';
     UI.CSS_ID_NEW_GAME = 'new-game';
     UI.CSS_ID_SETTINGS = 'settings';
+    UI.CSS_ID_RESET = 'reset';
     UI.EVENT_TOGGLE_FLAGS = 'toggle-flags';
     UI.EVENT_PAUSE = 'pause';
     UI.EVENT_SHOW_SCORE = 'show-score';
