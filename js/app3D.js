@@ -399,6 +399,7 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
             window.app = app;
             window.grid = grid;
             window.clock = clock;
+            window.ui = ui;
 
             return;
         }
