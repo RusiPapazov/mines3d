@@ -107,10 +107,28 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
         }
     };
 
+    const pause = ({ updateUi} = {updateUi: false}) => {
+        clock.stop();
+        grid.setPaused(true);
+        app.scene.fog.density = 0.1;
+        if (updateUi) {
+            ui.elements.pause.checked = true;
+        }
+    };
+
+    const resume = () => {
+        clock.start();
+        grid.setPaused(false);
+        app.scene.fog.density = 0.00025;
+    };
+
     const animate = function animate() {
 //            if (grid.isInitialized() && !grid.isPaused() && grid.isActive()) {
 //                clock.start();
 //            }
+        if (!document.hasFocus() && clock.running) {
+            pause({updateUi: true});
+        }
         window.requestAnimationFrame(animate);
         app.controls.update();
         render();
@@ -319,12 +337,12 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
 
         ui.on(UI.EVENT_PAUSE, function (paused) {
             if (paused) {
-                clock.stop();
-            } else {
-                clock.start();
+                pause();
+
+                return;
             }
-            grid.setPaused(paused);
-            app.scene.fog.density = paused ? 0.1 : 0.00025;
+
+            resume();
         });
 
         THREEx.FullScreen.bindKey({
