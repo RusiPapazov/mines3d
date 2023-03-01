@@ -354,6 +354,17 @@ define(['three', 'Clock', 'Detector', 'UI', 'Api', 'Settings', 'Storage', 'utils
             resume();
         });
 
+        ui.on(UI.EVENT_RESET, () => {
+            // @todo this needs some reworking.
+            const s = ui.settings.get(Settings.SOURCE_STORAGE);
+            grid.reset(s);
+            clock.reset();
+            clock.stop();
+
+            ui.setMinesLeft(grid.getMines());
+            ui.setTime(clock.elapsedTime);
+        });
+
         THREEx.FullScreen.bindKey({
             charCode: true,//config.fullscreen.charCode,
             dblclick: true,
