@@ -6,9 +6,10 @@ define(['nanoModal'], function (nanoModal) {
         return text.replace(/\n/g, '<br>');
     };
     const element = () => document.getElementById('prompt-input');
+    const blurAll = () => document.querySelectorAll(':focus').forEach(el => el.blur());
 
     return {
-        alert: function (text, cb) {
+        alert: function (text, cb = () => {}) {
             const dialog = nanoModal(formatText(text), {
                 overlayClose: false,
                 buttons: [{
@@ -16,16 +17,16 @@ define(['nanoModal'], function (nanoModal) {
                     autoRemove: true,
                     primary: true,
                     handler: function (modal) {
-                        if (typeof cb === 'function') {
-                            cb();
-                        }
+                        cb();
                         modal.hide();
                     }
                 }]
             });
+
+            blurAll();
             dialog.show();
         },
-        prompt: function prompt(text, dflt, cb) {
+        prompt: function prompt(text, dflt, cb = () => {}) {
             text += '<br><input value="' + dflt + '" id="prompt-input">';
             const dialog = nanoModal(formatText(text), {
                 overlayClose: false,
@@ -40,6 +41,8 @@ define(['nanoModal'], function (nanoModal) {
                     }
                 }]
             });
+
+            blurAll();
             dialog.show();
             element().focus();
         }
