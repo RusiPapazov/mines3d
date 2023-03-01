@@ -9,18 +9,18 @@
     </head>
     <body>
         <div id="settings">
+            <button id="close-settings">&times;</button>
             <div>
                 <label>Rows: <input type="number" min="3"  step="1" id="x"></label>
                 <label>Columns: <input type="number" min="3" step="1" id="y"></label>
                 <label>Layers: <input type="number" min="3" step="1" id="z"></label>
                 <label>Mines: <input type="number" min="3" step="1" id="m"></label>
-                <button class="button" id="new-game">New game</button>
+                <button class="button" id="new-game">New</button>
             </div>
-            <div>
-                Popular games:
-                <ol id="popular-games"></ol>
-            </div>
-            <a id="author" href="mailto:rusi.papazov@gmail.com" rel="author">contact me</a>
+<!--            <div>-->
+<!--                Popular games:-->
+<!--                <ol id="popular-games"></ol>-->
+<!--            </div>-->
         </div>
         <input type="hidden" id="csrf" value="4fb4bdca96">
         <header id="header">
